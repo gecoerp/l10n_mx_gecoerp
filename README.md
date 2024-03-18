@@ -25,7 +25,7 @@ Contribuidores
 
 * Manuel Cabañas <mcabanas@gecoerp.mx>
 
-## Servicios de soporte, capacitación o implantación.
+## Servicios de soporte, capacitación o implementación.
 Sitio Web: https://www.gecoerp.com/soporte
 
 Teléfono : (55) 58613000 (México)
