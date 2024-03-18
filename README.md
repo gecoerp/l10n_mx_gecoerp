@@ -3,7 +3,7 @@ Facturación CFDI para Odoo
 
 [//]: # (addons)
 
-## Modulos Disponibles
+## Módulos Disponibles
 | MODULO | VERSION | COLABORADORES | RESUMEN | LICENCIA |
 | ------ | ------ | ------ | ------ | ------ |
 | [l10n_mx_edi_gecoerp_pac](l10n_mx_edi_gecoerp_pac/) | 17.0.1 | [![gecoerp](https://github.com/gecoerp.png?size=30px)](https://github.com/gecoerp) | Integra un PAC adicional a Odoo Enterprice | [OPL-1](https://www.gnu.org/licenses/license-list.html#OpenContentL) |
