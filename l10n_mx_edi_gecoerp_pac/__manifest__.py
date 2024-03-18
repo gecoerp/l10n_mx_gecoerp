@@ -15,7 +15,8 @@
     'data': [
         'views/res_company_view.xml',
         'data/cron.xml',
-    ],
+    ],    
+    'images': ['static/description/banner.png'],
     'application': False,
     'installable': True,
     'license': 'OPL-1',
