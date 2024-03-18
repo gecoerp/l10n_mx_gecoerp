@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="Partner_form" model="ir.ui.view">
+            <field name="name">res.company.form.inherit</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+               <xpath expr="//notebook" position="inside">
+                    <page name="info_cfdi" string="PAC GECOERP">
+                        <group cols="4" string="Configuración">
+                            <group>                                                         
+                                <field name="tipo_licencia"/>
+                                <field name="fecha_ini_licencia"/>                                
+                                <field name="redundancia_timbrado"/>
+                                <button name="button_registra"
+                                    string="Registrar y Actualizar" type="object" class="oe_edit_only oe_inline oe_highlight" style="margin-left: 10px;"/>
+                            </group>
+                            <group>
+                                <field name="api_key"/>
+                                <field name="fecha_fin_licencia"/>
+                                <field name="servidor_de_timbrado_ent"/>
+                                <field name="mantener_copia_de_cfdi"/>
+                            </group>
+                        </group>
+                        <group cols="4" string="Información">
+                            <group>
+                                <field name="timbres_produccion"/>
+                                <field name="vigencia_timbres_produccion"/>
+                                <button name="button_consulta"
+                                    string="Consultar Timbres Disponibles" type="object" class="oe_edit_only oe_inline oe_highlight" style="margin-left: 10px;"/>
+                            </group>
+                            <group>
+                                <field name="timbres_pruebas"/>
+                                <field name="vigencia_timbres_pruebas"/>
+                                <field name="log"/>
+                            </group>
+                        </group>
+	                </page>
+	            </xpath>
+            </field>
+        </record>
+</odoo>
