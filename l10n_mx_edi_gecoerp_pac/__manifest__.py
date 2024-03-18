@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Integra a GECOERP como PAC Adicional (CFDI 4.0 México)',
-    'version': '17.0.1',
+    'version': '0.1',
     'description':  ''' 
          Integra a GECOERP como PAC adicional para la certificación de documentos CFDI.
                     ''',
