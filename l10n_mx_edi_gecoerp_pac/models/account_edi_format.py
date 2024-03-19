@@ -12,14 +12,14 @@ class L10nMxEdiDocument(models.Model):
 
     @api.model
     def _get_gecoerp_credentials(self, company):
-        if not company.sudo().l10n_mx_edi_pac_username:
+        if not company.api_key:
             return {
-                'errors': [_("The username are missing.")]
+                'errors': [_("The api key are missing.")]
             }
         url = '%s' % (company.servidor_de_timbrado_ent)
         return {
             'rfc': company.vat.upper(),
-            'username': company.sudo().l10n_mx_edi_pac_username,
+            'apikey': company.api_key,
             'url': url,
             'modo_prueba': company.l10n_mx_edi_pac_test_env,
         }
@@ -34,12 +34,13 @@ class L10nMxEdiDocument(models.Model):
             'emisor': {
                 'rfc': credentials['rfc']
             },
-            'xml': cfdi.decode("utf-8"),      
-            'conf': {            
-                'apli': 'TIM-DOC',            
-                'modo_prueba': credentials['modo_prueba'],
+            'xml': cfdi.decode("utf-8"),  
+            'conf': {
+                'apli': 'TIM-DOC',   
+                'apikey': credentials['apikey'],          
                 'url': self.env['ir.config_parameter'].sudo().get_param('web.base.url'),
-                'uuid': self.env['ir.config_parameter'].sudo().get_param('database.uuid')
+                'uuid': self.env['ir.config_parameter'].sudo().get_param('database.uuid'),
+                'modo_prueba': credentials['modo_prueba'],
             }
         }
 
@@ -76,25 +77,24 @@ class L10nMxEdiDocument(models.Model):
         certificate = certificates.sudo()._get_valid_certificate()
 
         data = {
-            'rfc': company.vat,
-            'api_key': self.api_key,
-            'uuid': uuid,
-            'motivo': cancel_reason,
-            'foliosustitucion': cancel_uuid,
-            'modo_prueba': company.l10n_mx_edi_pac_test_env,
-           
-            'conf': {            
-                'apli': 'TIM-DOC',            
-                'modo_prueba': credentials['modo_prueba'],
+            'emisor': {
+                'rfc': credentials['rfc']
+            },         
+            'conf': {
+                'apli': 'CAN-DOC',   
+                'apikey': credentials['apikey'],          
                 'url': self.env['ir.config_parameter'].sudo().get_param('web.base.url'),
-                'uuid': self.env['ir.config_parameter'].sudo().get_param('database.uuid')
+                'uuid': self.env['ir.config_parameter'].sudo().get_param('database.uuid'),
+                'modo_prueba': credentials['modo_prueba'],            
+                'uuid': uuid,
+                'motivo': cancel_reason,
+                'foliosustitucion': cancel_uuid,
+                'certificados': {
+                    'archivo_cer': certificate.content.decode('UTF-8'),
+                    'archivo_key': certificate.key.decode('UTF-8'),
+                    'contrasena': certificate.password,
+                }
             }
-        
-            'certificados': {
-                'archivo_cer': certificate.content.decode('UTF-8'),
-                'archivo_key': certificate.key.decode('UTF-8'),
-                'contrasena': certificate.password,
-            },
         }
 
         try:
@@ -103,7 +103,6 @@ class L10nMxEdiDocument(models.Model):
             return {
                 'errors': [_("The GECOERP service failed to cancel with the following error: %s", str(e))],
             }
-
 
         code = None
         msg = None
