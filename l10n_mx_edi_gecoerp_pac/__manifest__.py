@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Integra a GECOERP como PAC Adicional (CFDI 4.0 México)',
+    'name': 'MultyPAC GECOERP PAC Adicional (CFDI 4.0 México)',
     'version': '0.1',
     'description':  ''' 
-         Integra a GECOERP como PAC adicional para la certificación de documentos CFDI.
+         Añade GECOERP como MultyPAC adicional para la certificación de documentos CFDI.
                     ''',
     'category': 'Accounting',
     'author': 'GECOERP',
