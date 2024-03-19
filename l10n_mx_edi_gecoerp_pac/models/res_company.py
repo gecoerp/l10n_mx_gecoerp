@@ -137,7 +137,7 @@ class ResCompany(models.Model):
 
         return True
 
-    def register_company(self):
+    def register_company_ent(self):
 
         existe_error = False
         message = ''
@@ -186,17 +186,25 @@ class ResCompany(models.Model):
         json_response = response.json()
 
         if json_response['code'] == '200':
-           values = {
-               'api_key': json_response['api_key'],
+           val = {
+               'api_key': json_response['apikey'],
                'tipo_licencia': json_response['tipo_licencia'],
                'fecha_ini_licencia': json_response['fecha_ini'],
                'fecha_fin_licencia': json_response['fecha_fin'],
                'log': json_response['message']
            }
-           self.update(values)
+           self.update(val)
+        elif json_response['code'] == '510':
+           val = {
+               'api_key': '',
+               'fecha_fin_licencia': json_response['fecha_fin'],
+               'log': json_response['code'] + " - " + json_response['message']
+           }
+           self.update(val)
+           #raise UserError(json_response['code'] + " - " + json_response['message'])
         else:
-           log = {'log': json_response['code'] + " - " + json_response['message']}
-           self.update(log)
+           val = {'log': json_response['code'] + " - " + json_response['message']}
+           self.update(val)
            raise UserError(json_response['code'] + " - " + json_response['message'])
 
         return True
@@ -206,5 +214,5 @@ class ResCompany(models.Model):
         return True
 
     def button_registra(self):
-        self.register_company()
+        self.register_company_ent()
         return True
