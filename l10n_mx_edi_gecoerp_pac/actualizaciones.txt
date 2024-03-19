@@ -1,0 +1,8 @@
+V17.0.0.1
+- Integra un PAC más para facturación CFDI 4.0.
+- Versión Inicial.
+-- Consulta de Timbres.
+-- Permite la redundancia de servidor de timbrado.
+-- Permite mantener copia del CFDI con eo PAC.
+-- Permite tinbrar en pruebas con el CSD de la compañia.
+-- Permite replicar la transacción para análisis y soporte con el ID de la transacción, sin que se tenga que reintentar el timbrado.
