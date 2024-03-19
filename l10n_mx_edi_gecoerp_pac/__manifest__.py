@@ -7,6 +7,7 @@
                     ''',
     'category': 'Accounting',
     'author': 'GECOERP',
+    'maintainer': 'GECOERP',
     'website': 'https://www.gecoerp.com/',
     'depends': [
         'account',
