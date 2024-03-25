@@ -1,3 +1,7 @@
+V17.0.0.2
+-- Se integra la api key
+-- Se actualiza la función de cancelación.
+
 V17.0.0.1
 - Integra un PAC más para facturación CFDI 4.0.
 - Versión Inicial.
