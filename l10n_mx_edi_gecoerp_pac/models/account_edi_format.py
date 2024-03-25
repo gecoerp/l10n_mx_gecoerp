@@ -71,7 +71,7 @@ class L10nMxEdiDocument(models.Model):
     def _gecoerp_cancel(self, company, credentials, uuid, cancel_reason, cancel_uuid=None):
 
         headers = {"Content-type": "application/json"}
-        url = '%s' % (self.servidor_de_timbrado_ent)
+        url = credentials['url']
 
         certificates = company.l10n_mx_edi_certificate_ids
         certificate = certificates.sudo()._get_valid_certificate()
@@ -79,21 +79,23 @@ class L10nMxEdiDocument(models.Model):
         data = {
             'emisor': {
                 'rfc': credentials['rfc']
-            },         
+            },
+            'can': {         
+                'uuid': uuid,
+                'motivo': cancel_reason,
+                'foliosustitucion': cancel_uuid,
+            },
+            'cer': {
+                'archivo_cer': certificate.content.decode('UTF-8'),
+                'archivo_key': certificate.key.decode('UTF-8'),
+                'contrasena': certificate.password,
+            },
             'conf': {
                 'apli': 'CAN-DOC',   
                 'apikey': credentials['apikey'],          
                 'url': self.env['ir.config_parameter'].sudo().get_param('web.base.url'),
                 'uuid': self.env['ir.config_parameter'].sudo().get_param('database.uuid'),
-                'modo_prueba': credentials['modo_prueba'],            
-                'uuid': uuid,
-                'motivo': cancel_reason,
-                'foliosustitucion': cancel_uuid,
-                'certificados': {
-                    'archivo_cer': certificate.content.decode('UTF-8'),
-                    'archivo_key': certificate.key.decode('UTF-8'),
-                    'contrasena': certificate.password,
-                }
+                'modo_prueba': credentials['modo_prueba'],
             }
         }
 
@@ -109,14 +111,9 @@ class L10nMxEdiDocument(models.Model):
 
         response_json = response.json()
 
-        if response_code not in ('201', '202'):
-            code = response_code
-            if response.resultados:
-                result = response.resultados[0]
-            else:
-                result = response
-            if 'mensaje' in result:
-                msg = result.mensaje
+        if response_json['code'] not in ('201', '202'):
+            code = response_json['code']
+            msg = response_json['message']
 
         errors = []
         if code:
