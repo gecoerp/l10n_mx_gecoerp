@@ -6,7 +6,7 @@ Facturación CFDI para Odoo
 ## Módulos Disponibles
 | MODULO | VERSION | COLABORADORES | RESUMEN | LICENCIA |
 | ------ | ------ | ------ | ------ | ------ |
-| [l10n_mx_edi_gecoerp_pac](l10n_mx_edi_gecoerp_pac/) | 17.0.0.1 | [![gecoerp](https://github.com/gecoerp.png?size=30px)](https://github.com/gecoerp) | Integra un PAC adicional a Odoo Enterprice | [OPL-1](https://www.gnu.org/licenses/license-list.html#OpenContentL) |
+| [l10n_mx_edi_gecoerp_pac](l10n_mx_edi_gecoerp_pac/) | 17.0.0.1 | [![gecoerp](https://github.com/gecoerp.png?size=30px)](https://github.com/gecoerp) | Integra un PAC adicional a Odoo Enterprice V17 | [OPL-1](https://www.gnu.org/licenses/license-list.html#OpenContentL) |
 
 [//]: # (end addons)
 
@@ -21,9 +21,10 @@ Autores
 
 * GECOERP
 
-Contribuidores
+Colaboradores
 
-* Manuel Cabañas <mcabanas@gecoerp.mx>
+-  GECOERP
+   - Manuel Cabañas <mcabanas@gecoerp.mx>
 
 ## Servicios de soporte, capacitación o implementación.
 Sitio Web: https://www.gecoerp.com/soporte
