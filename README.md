@@ -5,15 +5,16 @@ Facturación CFDI para Odoo
 * Este repositorio tiene licencia bajo (LGPL-V3)
 * Sin embargo, cada módulo puede tener una licencia totalmente diferente. Consulte el archivo `__manifest__.py` del manifiesto de cada módulo, que contiene una `license` key que explica su licencia.
 
-## Creditos
+## Créditos
 
 Autores
 
 * GECOERP
 
-Contribuidores
+Colaboradores
 
-* Manuel Cabañas <mcabanas@gecoerp.mx>
+-  GECOERP
+   - Manuel Cabañas <mcabanas@gecoerp.mx>
 
 ## Servicios de soporte, capacitación o implantación.
 Sitio Web: https://www.gecoerp.com/soporte
